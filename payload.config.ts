@@ -42,6 +42,40 @@ export default buildConfig({
       fields: [],
     },
     {
+      slug: 'experiences',
+      fields: [
+        { name: 'title', type: 'text', required: true },
+        { name: 'location', type: 'text' },
+        { name: 'description', type: 'richText' },
+        { name: 'icon', type: 'upload', relationTo: 'media' },
+        { name: 'date', type: 'text' },
+      ],
+    },
+    {
+      slug: 'projects',
+      fields: [
+        { name: 'title', type: 'text', required: true },
+        { name: 'description', type: 'richText' },
+        { name: 'tags', type: 'array', label: 'Tags', fields: [{ name: 'tag', type: 'text' }] },
+        { name: 'image', type: 'upload', relationTo: 'media' },
+        { name: 'href', type: 'text', label: 'Website Link' },
+      ],
+    },
+    {
+      slug: 'skills',
+      fields: [{ name: 'name', type: 'text', required: true, unique: true }],
+    },
+    {
+      slug: 'media',
+      upload: true,
+      fields: [
+        {
+          name: 'text',
+          type: 'text',
+        },
+      ],
+    },
+    {
       slug: 'pages',
       admin: {
         useAsTitle: 'title',
@@ -54,16 +88,6 @@ export default buildConfig({
         {
           name: 'content',
           type: 'richText',
-        },
-      ],
-    },
-    {
-      slug: 'media',
-      upload: true,
-      fields: [
-        {
-          name: 'text',
-          type: 'text',
         },
       ],
     },
